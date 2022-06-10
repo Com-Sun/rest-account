@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
 @Setter
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Table(name = "account")
 @Entity
 @EqualsAndHashCode
+@DynamicInsert
 public class Account {
     @Id
     @Column(name = "account_num")
@@ -32,6 +34,9 @@ public class Account {
 
     @Column(name = "account_mail")
     private String accountMail;
+
+    @Column(name = "account_status")
+    private String accountStatus;
 
     @Builder(builderClassName = "AccountBuilder")
     private Account (String accountId, String accountPwd, String accountMail) {

@@ -48,3 +48,7 @@
 #### ServiceLayer
 
 - 레포지토리 테스트를 했기 때문에 verify로 행위만 검증하면 된다.
+
+### JPA
+
+- DynamicInsert: default 속성을 사용할 때 사용. jpa는 자체적으로 값이 없으면 null을 보내는데, 이것을 없애기 위함.
