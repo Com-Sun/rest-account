@@ -9,5 +9,7 @@ public interface AccountService {
     List<AccountResponseDTO> getAllAccounts();
     AccountResponseDTO createAccount(AccountRequestDTO requestDTO);
     AccountResponseDTO updateAccount(Long accountNum , AccountModifyRequestDTO requestDTO);
+    AccountResponseDTO changeAccountStateToDelete(Long accountNum);
+
     boolean deleteAccount(Long accountNum);
 }

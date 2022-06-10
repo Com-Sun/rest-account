@@ -77,9 +77,10 @@ class AccountServiceTest {
         given(accountRepository.findById(any()))
             .willReturn(Optional.of(account));
 
-        accountService.deleteAccount(1L);
+        accountService.changeAccountStateToDelete(1L);
 
         verify(accountRepository, atLeastOnce()).findById(any());
-        verify(accountRepository, atLeastOnce()).delete(any());
+        verify(accountRepository, atLeastOnce()).save(any());
+
     }
 }

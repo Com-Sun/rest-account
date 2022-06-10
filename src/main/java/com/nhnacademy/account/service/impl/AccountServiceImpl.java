@@ -43,9 +43,17 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public AccountResponseDTO changeAccountStateToDelete(Long accountNum) {
+        Account account = accountRepository.findById(accountNum).orElseThrow(() -> new NotFoundAccountException("계정이 유효하지 않습니다."));
+        account.setAccountStatus("deleted");
+        accountRepository.save(account);
+        return accountRepository.findByAccountId(account.getAccountId());
+    }
+
+    @Override
     public boolean deleteAccount(Long accountNum) {
         Optional<Account> account = accountRepository.findById(accountNum);
-        if(account.isPresent()) {
+        if (account.isPresent()) {
             accountRepository.delete(account.get());
             return true;
         }
