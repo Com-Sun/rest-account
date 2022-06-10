@@ -21,7 +21,6 @@
 - Spring Boot
 - Spring Data JPA
 - MySql
-- Spring Security
 
 
 ## Note
@@ -52,3 +51,8 @@
 ### JPA
 
 - DynamicInsert: default 속성을 사용할 때 사용. jpa는 자체적으로 값이 없으면 null을 보내는데, 이것을 없애기 위함.
+
+
+도메인이란? : 해결하고자 하는 문제의 영역. 즉, 개발 대상과 범위.
+
+요구사항을 분석해서 핵심 엔티티를 추출하고, 그들간의 관계를 정의하는 것.
