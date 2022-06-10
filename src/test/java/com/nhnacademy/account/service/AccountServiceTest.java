@@ -46,7 +46,6 @@ class AccountServiceTest {
     void createAccountTest() {
         accountService.createAccount(requestDTO);
         verify(accountRepository, atLeastOnce()).save(any());
-
     }
 
     @Test
