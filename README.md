@@ -23,3 +23,24 @@
 - MySql
 - Spring Security
 
+
+## Note
+
+### Config
+
+- EntitiyManagerFactoryBean
+- TransactionManager
+
+- @SpringBootApplication
+  - @Configuration
+  - @EnableAutoConfiguration
+  - @ComponentScan
+
+
+### Test
+
+- @DataJpaTest
+  - Repository, Entity만을 scan하는 Sliced Test
+  - 하지만 MySql을 사용한다면 설정에 의해 오류
+  - why? Embedded Db (ex- H2) 를 자동으로 사용하기 때문
+  - @AutoConfigureTestDatabase(replace = Replace.NONE) 를 달아줘야 해당 설정을 무시하여 mysql로 테스트할 수 있다.
