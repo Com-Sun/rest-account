@@ -28,7 +28,6 @@ class AccountRepositoryTest {
 
     @Test
     public void saveTest() {
-
         accountRepository.save(account);
         AccountResponseDTO hyunjin = accountRepository.findByAccountId("hyunjin");
         assertThat(hyunjin).isNotNull();
@@ -38,7 +37,15 @@ class AccountRepositoryTest {
 
     @Test
     public void getAllTest() {
+        accountRepository.save(account);
+        assertThat(accountRepository.findAll()).hasSize(1);
+    }
 
+    @Test
+    public void deleteTest() {
+        accountRepository.save(account);
+        accountRepository.delete(account);
+        assertThat(accountRepository.findAll()).hasSize(0);
     }
 
 }

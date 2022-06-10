@@ -57,7 +57,6 @@ class AccountServiceTest {
 
     @Test
     void updateAccountTest() {
-
         given(accountRepository.findById(any()))
             .willReturn(Optional.of(account));
 
@@ -71,10 +70,16 @@ class AccountServiceTest {
         verify(accountRepository, atLeastOnce()).findByAccountId(any());
         verify(accountRepository, atLeastOnce()).save(any());
 
-
     }
 
     @Test
     void deleteAccount() {
+        given(accountRepository.findById(any()))
+            .willReturn(Optional.of(account));
+
+        accountService.deleteAccount(1L);
+
+        verify(accountRepository, atLeastOnce()).findById(any());
+        verify(accountRepository, atLeastOnce()).delete(any());
     }
 }
