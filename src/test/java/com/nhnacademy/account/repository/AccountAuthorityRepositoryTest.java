@@ -25,7 +25,6 @@ class AccountAuthorityRepositoryTest {
     @Test
     void saveTest() {
         Account hyunjin = Account.builder()
-            .accountNum(1L)
             .accountId("hyunjin")
             .accountPwd("hyunjin")
             .accountMail("hyunjin@nhnacdemy.com")

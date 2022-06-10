@@ -2,6 +2,8 @@ package com.nhnacademy.account.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Builder;
@@ -19,6 +21,7 @@ import lombok.Setter;
 public class Account {
     @Id
     @Column(name = "account_num")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long accountNum;
 
     @Column(name = "account_id")
@@ -31,8 +34,7 @@ public class Account {
     private String accountMail;
 
     @Builder(builderClassName = "AccountBuilder")
-    private Account (Long accountNum, String accountId, String accountPwd, String accountMail) {
-        this.accountNum = accountNum;
+    private Account (String accountId, String accountPwd, String accountMail) {
         this.accountId= accountId;
         this.accountPwd = accountPwd;
         this.accountMail = accountMail;

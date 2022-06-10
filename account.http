@@ -1,0 +1,9 @@
+POST /accounts HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "accountId": "hyunjin",
+  "accountPwd": "hyunjin",
+  "accountMail": "hyunjin@nhn.com"
+}

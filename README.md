@@ -44,3 +44,7 @@
   - 하지만 MySql을 사용한다면 설정에 의해 오류
   - why? Embedded Db (ex- H2) 를 자동으로 사용하기 때문
   - @AutoConfigureTestDatabase(replace = Replace.NONE) 를 달아줘야 해당 설정을 무시하여 mysql로 테스트할 수 있다.
+
+#### ServiceLayer
+
+- 레포지토리 테스트를 했기 때문에 verify로 행위만 검증하면 된다.

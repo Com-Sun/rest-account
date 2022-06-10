@@ -4,6 +4,5 @@ import com.nhnacademy.account.entity.AccountAuthority;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface AccountAuthorityRepository extends JpaRepository<AccountAuthority, Long> {
 }
