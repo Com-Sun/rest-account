@@ -1,6 +1,6 @@
 package com.nhnacademy.account.controller;
 
-import com.nhnacademy.account.domain.dto.request.AccountModifyLoginRequestDTO;
+import com.nhnacademy.account.domain.dto.request.AccountModifyRequestDTO;
 import com.nhnacademy.account.domain.dto.request.AccountRequestDTO;
 import com.nhnacademy.account.domain.dto.response.AccountResponseDTO;
 import com.nhnacademy.account.service.AccountService;
@@ -36,7 +36,7 @@ public class AccountRestController {
     }
 
     @PutMapping(value = "/accounts/{accountNum}")
-    AccountResponseDTO updateAccount(@RequestBody @Valid AccountModifyLoginRequestDTO requestDTO, @PathVariable(name = "accountNum") Long accountNum) {
+    AccountResponseDTO updateAccount(@RequestBody @Valid AccountModifyRequestDTO requestDTO, @PathVariable(name = "accountNum") Long accountNum) {
         return accountService.updateAccount(accountNum, requestDTO);
     }
 
@@ -51,7 +51,7 @@ public class AccountRestController {
     }
 
     @PostMapping(value = "/accounts/login")
-    ResponseEntity<AccountResponseDTO> login(@RequestBody @Valid AccountModifyLoginRequestDTO requestDTO)
+    ResponseEntity<AccountResponseDTO> login(@RequestBody AccountModifyRequestDTO requestDTO)
         throws AccountNotFoundException {
 
         AccountResponseDTO responseDTO = accountService.doLogin(requestDTO);
