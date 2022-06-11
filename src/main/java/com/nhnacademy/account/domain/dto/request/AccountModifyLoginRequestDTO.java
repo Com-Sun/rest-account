@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class AccountModifyRequestDTO {
+public class AccountModifyLoginRequestDTO {
     private String accountId;
     @NotBlank(message = "비밀번호가 공백으로 인한 에러")
     private String accountPwd;

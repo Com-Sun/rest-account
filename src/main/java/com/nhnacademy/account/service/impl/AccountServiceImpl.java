@@ -1,6 +1,6 @@
 package com.nhnacademy.account.service.impl;
 
-import com.nhnacademy.account.domain.dto.request.AccountModifyRequestDTO;
+import com.nhnacademy.account.domain.dto.request.AccountModifyLoginRequestDTO;
 import com.nhnacademy.account.domain.dto.request.AccountRequestDTO;
 import com.nhnacademy.account.domain.dto.response.AccountResponseDTO;
 import com.nhnacademy.account.entity.Account;
@@ -9,6 +9,7 @@ import com.nhnacademy.account.repository.AccountRepository;
 import com.nhnacademy.account.service.AccountService;
 import java.util.List;
 import java.util.Optional;
+import javax.security.auth.login.AccountNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public AccountResponseDTO updateAccount(Long accountNum, AccountModifyRequestDTO requestDTO) {
+    public AccountResponseDTO updateAccount(Long accountNum, AccountModifyLoginRequestDTO requestDTO) {
         Account account = accountRepository.findById(accountNum).orElseThrow(() -> new NotFoundAccountException("해당 회원이 존재하지 않습니다."));
         account.setAccountPwd(requestDTO.getAccountPwd());
         accountRepository.save(account);
@@ -63,5 +64,14 @@ public class AccountServiceImpl implements AccountService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public AccountResponseDTO doLogin(AccountModifyLoginRequestDTO requestDTO)
+        throws AccountNotFoundException {
+        Account account = accountRepository.queryByAccountId(requestDTO.getAccountId())
+            .orElseThrow(() -> new AccountNotFoundException("해당 회원이 존재하지 않습니다."));
+
+        return accountRepository.findByAccountId(account.getAccountId());
     }
 }

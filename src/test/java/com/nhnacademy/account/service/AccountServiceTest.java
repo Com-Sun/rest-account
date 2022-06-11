@@ -5,7 +5,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 
-import com.nhnacademy.account.domain.dto.request.AccountModifyRequestDTO;
+import com.nhnacademy.account.domain.dto.request.AccountModifyLoginRequestDTO;
 import com.nhnacademy.account.domain.dto.request.AccountRequestDTO;
 import com.nhnacademy.account.entity.Account;
 import com.nhnacademy.account.repository.AccountRepository;
@@ -59,7 +59,7 @@ class AccountServiceTest {
         given(accountRepository.findById(any()))
             .willReturn(Optional.of(account));
 
-        AccountModifyRequestDTO modifyrequestDTO = AccountModifyRequestDTO.builder()
+        AccountModifyLoginRequestDTO modifyrequestDTO = AccountModifyLoginRequestDTO.builder()
             .accountId("hyunjin")
             .accountPwd("modifiedPwd")
             .build();

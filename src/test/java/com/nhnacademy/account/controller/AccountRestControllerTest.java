@@ -11,19 +11,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nhnacademy.account.domain.dto.request.AccountModifyRequestDTO;
+import com.nhnacademy.account.domain.dto.request.AccountModifyLoginRequestDTO;
 import com.nhnacademy.account.domain.dto.request.AccountRequestDTO;
 import com.nhnacademy.account.entity.Account;
 import com.nhnacademy.account.repository.AccountRepository;
-import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -148,7 +143,7 @@ class AccountRestControllerTest {
                 .accountMail("hyunjin@nhn.com")
                 .build()));
 
-        AccountModifyRequestDTO modifyRequest = AccountModifyRequestDTO.builder()
+        AccountModifyLoginRequestDTO modifyRequest = AccountModifyLoginRequestDTO.builder()
             .accountId("hyunjin")
             .accountPwd("12345")
             .build();
