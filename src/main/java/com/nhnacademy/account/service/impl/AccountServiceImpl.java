@@ -1,6 +1,6 @@
 package com.nhnacademy.account.service.impl;
 
-import com.nhnacademy.account.domain.dto.request.AccountModifyLoginRequestDTO;
+import com.nhnacademy.account.domain.dto.request.AccountModifyRequestDTO;
 import com.nhnacademy.account.domain.dto.request.AccountRequestDTO;
 import com.nhnacademy.account.domain.dto.response.AccountResponseDTO;
 import com.nhnacademy.account.entity.Account;
@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public AccountResponseDTO updateAccount(Long accountNum, AccountModifyLoginRequestDTO requestDTO) {
+    public AccountResponseDTO updateAccount(Long accountNum, AccountModifyRequestDTO requestDTO) {
         Account account = accountRepository.findById(accountNum).orElseThrow(() -> new NotFoundAccountException("해당 회원이 존재하지 않습니다."));
         account.setAccountPwd(requestDTO.getAccountPwd());
         accountRepository.save(account);
@@ -67,7 +67,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountResponseDTO doLogin(AccountModifyLoginRequestDTO requestDTO)
+    public AccountResponseDTO doLogin(AccountModifyRequestDTO requestDTO)
         throws AccountNotFoundException {
         Account account = accountRepository.queryByAccountId(requestDTO.getAccountId())
             .orElseThrow(() -> new AccountNotFoundException("해당 회원이 존재하지 않습니다."));

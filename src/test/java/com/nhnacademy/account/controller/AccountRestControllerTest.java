@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nhnacademy.account.domain.dto.request.AccountModifyLoginRequestDTO;
+import com.nhnacademy.account.domain.dto.request.AccountModifyRequestDTO;
 import com.nhnacademy.account.domain.dto.request.AccountRequestDTO;
 import com.nhnacademy.account.entity.Account;
 import com.nhnacademy.account.repository.AccountRepository;
@@ -143,7 +143,7 @@ class AccountRestControllerTest {
                 .accountMail("hyunjin@nhn.com")
                 .build()));
 
-        AccountModifyLoginRequestDTO modifyRequest = AccountModifyLoginRequestDTO.builder()
+        AccountModifyRequestDTO modifyRequest = AccountModifyRequestDTO.builder()
             .accountId("hyunjin")
             .accountPwd("12345")
             .build();
