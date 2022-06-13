@@ -37,14 +37,14 @@ class AccountRepositoryTest {
     @Test
     public void getAllTest() {
         accountRepository.save(account);
-        assertThat(accountRepository.findAll()).hasSize(1);
+        assertThat(accountRepository.findAll()).isNotNull();
     }
 
     @Test
     public void deleteTest() {
         accountRepository.save(account);
         accountRepository.delete(account);
-        assertThat(accountRepository.findAll()).hasSize(0);
+        assertThat(accountRepository.findById(account.getAccountNum())).isNotPresent();
     }
 
 }

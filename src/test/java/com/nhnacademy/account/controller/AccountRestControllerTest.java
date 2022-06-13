@@ -129,8 +129,7 @@ class AccountRestControllerTest {
         this.mvc.perform(
             get(("/accounts"))
         ).andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$[0].accountId", equalTo("hyunjin")));
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @DisplayName("API - Account 비밀번호 수정 테스트")
@@ -179,7 +178,7 @@ class AccountRestControllerTest {
     @Test
     void deleteAccountTest() throws Exception {
         this.mvc.perform(
-                delete("/accounts/delete/{accountNum}", 1L))
+                delete("/accounts/{accountNum}", 1L))
             .andExpect(status().isOk());
     }
 

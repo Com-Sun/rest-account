@@ -45,7 +45,7 @@ public class AccountRestController {
         return accountService.changeAccountStateToDelete(accountNum);
     }
 
-    @DeleteMapping(value = "/accounts/delete/{accountNum}")
+    @DeleteMapping(value = "/accounts/{accountNum}")
     boolean deleteAccount(@PathVariable(name = "accountNum") Long accountNum) {
         return accountService.deleteAccount(accountNum);
     }
