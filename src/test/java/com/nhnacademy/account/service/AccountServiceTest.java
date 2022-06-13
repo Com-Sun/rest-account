@@ -77,7 +77,6 @@ class AccountServiceTest {
             .willReturn(Optional.of(account));
 
         accountService.changeAccountStateToDelete(1L);
-
         verify(accountRepository, atLeastOnce()).findById(any());
         verify(accountRepository, atLeastOnce()).save(any());
 

@@ -15,7 +15,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 class AccountRepositoryTest {
     @Autowired
     private AccountRepository accountRepository;
-
     private Account account;
     @BeforeEach
     void setUp() {
@@ -27,7 +26,7 @@ class AccountRepositoryTest {
     }
 
     @Test
-    public void saveTest() {
+    public void findByAccountIdTest() {
         accountRepository.save(account);
         AccountResponseDTO hyunjin = accountRepository.findByAccountId("hyunjin");
         assertThat(hyunjin).isNotNull();
