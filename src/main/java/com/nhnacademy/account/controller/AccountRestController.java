@@ -27,31 +27,31 @@ public class AccountRestController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/accounts")
-    AccountResponseDTO createAccount(@RequestBody @Valid AccountRequestDTO requestDTO) {
+    public AccountResponseDTO createAccount(@RequestBody @Valid AccountRequestDTO requestDTO) {
         return accountService.createAccount(requestDTO);
     }
     @GetMapping(value = "/accounts")
-    List<AccountResponseDTO> readAllAccounts() {
+    public List<AccountResponseDTO> readAllAccounts() {
         return accountService.getAllAccounts();
     }
 
     @PutMapping(value = "/accounts/{accountNum}")
-    AccountResponseDTO updateAccount(@RequestBody @Valid AccountModifyRequestDTO requestDTO, @PathVariable(name = "accountNum") Long accountNum) {
+    public AccountResponseDTO updateAccount(@RequestBody @Valid AccountModifyRequestDTO requestDTO, @PathVariable(name = "accountNum") Long accountNum) {
         return accountService.updateAccount(accountNum, requestDTO);
     }
 
     @PostMapping(value = "/accounts/{accountNum}")
-    AccountResponseDTO deleteAccountState(@PathVariable(name = "accountNum") Long accountNum) {
+    public AccountResponseDTO deleteAccountState(@PathVariable(name = "accountNum") Long accountNum) {
         return accountService.changeAccountStateToDelete(accountNum);
     }
 
-    @DeleteMapping(value = "/accounts/delete/{accountNum}")
+    @DeleteMapping(value = "/accounts/{accountNum}")
     boolean deleteAccount(@PathVariable(name = "accountNum") Long accountNum) {
         return accountService.deleteAccount(accountNum);
     }
 
     @PostMapping(value = "/accounts/login")
-    ResponseEntity<AccountResponseDTO> login(@RequestBody AccountModifyRequestDTO requestDTO)
+    public ResponseEntity<AccountResponseDTO> login(@RequestBody AccountModifyRequestDTO requestDTO)
         throws AccountNotFoundException {
 
         AccountResponseDTO responseDTO = accountService.doLogin(requestDTO);

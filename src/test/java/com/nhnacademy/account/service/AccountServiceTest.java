@@ -72,14 +72,21 @@ class AccountServiceTest {
     }
 
     @Test
-    void deleteAccount() {
+    void changeAccountStateToDeleteTest() {
         given(accountRepository.findById(any()))
             .willReturn(Optional.of(account));
 
         accountService.changeAccountStateToDelete(1L);
-
         verify(accountRepository, atLeastOnce()).findById(any());
         verify(accountRepository, atLeastOnce()).save(any());
-
     }
+
+    @Test
+    void deleteAccountTest() {
+        given(accountRepository.findById(any()))
+            .willReturn(Optional.of(account));
+        accountService.deleteAccount(account.getAccountNum());
+        verify(accountRepository, atLeastOnce()).delete(any());
+    }
+
 }
